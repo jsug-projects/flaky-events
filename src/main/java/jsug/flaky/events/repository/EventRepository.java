@@ -19,5 +19,9 @@ public interface EventRepository extends PagingAndSortingRepository<Event, UUID>
 			@DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME) @Param("fromDate") LocalDateTime startDate, 
 			@DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME) @Param("toDate") LocalDateTime endDate,
 			Pageable pageable);
+
+	
+	
+	
 	
 }

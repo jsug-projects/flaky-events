@@ -21,6 +21,8 @@ public class Speaker {
 
 	public UUID memberId;
 	
+	public String briefHistory;
+	
 
 	@ManyToOne
 	@JoinColumn(name="session_id")	

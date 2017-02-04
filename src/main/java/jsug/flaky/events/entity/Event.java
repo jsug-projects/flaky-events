@@ -21,7 +21,10 @@ public class Event {
 	public UUID id;
 	
 	public String eventName;
-
+	
+	public Integer attendeeMaxSize;
+	
+	
 	@Column(columnDefinition="TIMESTAMP")
 	public LocalDateTime startDate;	
 	@Column(columnDefinition="TIMESTAMP")
