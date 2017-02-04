@@ -60,6 +60,7 @@ public class FlankyEventsApplication {
 					Session session = new Session();
 					session.title = "タイトル"+i;
 					session.summary = "概要"+i;
+					session.event = event;
 					sessionRepository.save(session);	
 				}				
 				
