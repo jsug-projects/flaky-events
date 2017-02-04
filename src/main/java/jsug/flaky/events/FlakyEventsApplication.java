@@ -17,11 +17,11 @@ import jsug.flaky.events.repository.EventRepository;
 import jsug.flaky.events.repository.SessionRepository;
 
 @SpringBootApplication
-@EntityScan(basePackageClasses = { FlankyEventsApplication.class, Jsr310JpaConverters.class })
-public class FlankyEventsApplication {
+@EntityScan(basePackageClasses = { FlakyEventsApplication.class, Jsr310JpaConverters.class })
+public class FlakyEventsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FlankyEventsApplication.class, args);
+		SpringApplication.run(FlakyEventsApplication.class, args);
 	}
 	
 	@Autowired
