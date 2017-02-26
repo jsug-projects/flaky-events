@@ -7,7 +7,7 @@
 [[overview-http-verbs]]
 == HTTP verbs
 
-RESTful flaky events tries to adhere as closely as possible to standard HTTP and REST conventions in its
+Flaky events tries to adhere as closely as possible to standard HTTP and REST conventions in its
 use of HTTP verbs.
 
 |===
@@ -29,7 +29,7 @@ use of HTTP verbs.
 [[overview-http-status-codes]]
 == HTTP status codes
 
-RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
+Flaky events tries to adhere as closely as possible to standard HTTP and REST conventions in its
 use of HTTP status codes.
 
 |===
@@ -68,7 +68,7 @@ include::{snippets}/error-example/http-response.adoc[]
 [[overview-hypermedia]]
 == Hypermedia
 
-RESTful flaky events uses hypermedia and resources include links to other resources in their
+Flaky events uses hypermedia and resources include links to other resources in their
 responses. Responses are in http://stateless.co/hal_specification.html[Hypertext Application
 from resource to resource.
 Language (HAL)] format. Links can be found beneath the `_links` key. Users of the API should

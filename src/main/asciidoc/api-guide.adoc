@@ -1,4 +1,4 @@
-= RESTful Flaky Events API Guide
+= Flaky Events API Guide
 Kouhei Toki;
 :doctype: book
 :icons: font

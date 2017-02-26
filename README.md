@@ -1,7 +1,6 @@
-
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>RESTful Events Getting Started Guide</h1>
+<h1>Flaky Events Getting Started Guide</h1>
 <div class="details">
 <span id="author" class="author">Kouhei Toki</span><br>
 </div>
@@ -23,7 +22,7 @@
 <h2 id="_introduction"><a class="link" href="#_introduction">Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>RESTful Events is a RESTful web service for creating and showing events. It uses hypermedia
+<p>Flaky events is a RESTful web service for creating and showing events. It uses hypermedia
 to describe the relationships between resources and to allow navigation between them.</p>
 </div>
 </div>
@@ -35,7 +34,7 @@ to describe the relationships between resources and to allow navigation between 
 <h2 id="_running_the_service"><a class="link" href="#_running_the_service">Running the service</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>RESTful Events is written using <a href="http://projects.spring.io/spring-boot">Spring Boot</a> which
+<p>Flaky Events is written using <a href="http://projects.spring.io/spring-boot">Spring Boot</a> which
 makes it easy to get it up and running so that you can start exploring the REST API.</p>
 </div>
 <div class="paragraph">
@@ -133,7 +132,7 @@ Content-Length: 664
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-26 01:40:34 JST
+Last updated 2017-02-26 01:53:50 JST
 </div>
 </div>
 </body>

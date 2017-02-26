@@ -2,7 +2,7 @@
 :snippets: ./../../../target/generated-snippets
 :docIdBase: /getting-started
 
-= RESTful Events Getting Started Guide
+= Flaky Events Getting Started Guide
 Kouhei Toki;
 :doctype: book
 :icons: font
@@ -14,7 +14,7 @@ Kouhei Toki;
 [introduction]
 = Introduction
 
-RESTful Events is a RESTful web service for creating and showing events. It uses hypermedia
+Flaky events is a RESTful web service for creating and showing events. It uses hypermedia
 to describe the relationships between resources and to allow navigation between them.
 
 [getting-started]
@@ -24,7 +24,7 @@ to describe the relationships between resources and to allow navigation between 
 
 [getting-started-running-the-service]
 == Running the service
-RESTful Events is written using http://projects.spring.io/spring-boot[Spring Boot] which
+Flaky Events is written using http://projects.spring.io/spring-boot[Spring Boot] which
 makes it easy to get it up and running so that you can start exploring the REST API.
 
 The first step is to clone the Git repository:
