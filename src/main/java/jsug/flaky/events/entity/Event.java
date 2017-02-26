@@ -25,9 +25,9 @@ public class Event {
 	public Integer attendeeMaxSize;
 	
 	
-	@Column(columnDefinition="TIMESTAMP")
+	@Column(columnDefinition="DATETIME")
 	public LocalDateTime startDate;	
-	@Column(columnDefinition="TIMESTAMP")
+	@Column(columnDefinition="DATETIME")
 	public LocalDateTime endDate;
 	public String eventPlace;
 	@Column(columnDefinition="DATE")

@@ -1,107 +1,102 @@
 package jsug.flaky.events;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.io.IOException;
 
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
-
-import jsug.flaky.events.entity.Attendee;
-import jsug.flaky.events.entity.Event;
-import jsug.flaky.events.entity.Session;
-import jsug.flaky.events.entity.Speaker;
-import jsug.flaky.events.repository.AttendeeRepository;
-import jsug.flaky.events.repository.EventRepository;
-import jsug.flaky.events.repository.SessionRepository;
-import jsug.flaky.events.repository.SpeakerRepository;
 
 @SpringBootApplication
 @EntityScan(basePackageClasses = { FlakyEventsApplication.class, Jsr310JpaConverters.class })
 public class FlakyEventsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FlakyEventsApplication.class, args);
+		ApplicationContext ctx  = SpringApplication.run(FlakyEventsApplication.class, args);
+		ctx.getBean(DummyDataCreator.class).createDummyData();
+	}
+	
+
+//	@Bean
+//	public CommandLineRunner  commandLineRunner() {
+//		return new CommandLineRunner(){
+//			@Override
+//			public void run(String... args) throws Exception {
+//				dummyDataCreator().createDummyData();
+//			}
+//		};
+//	}
+	
+	
+//	@Bean
+//	@Profile("!cloud")
+//	RequestDumperFilter dumperFilter() {
+//		return new RequestDumperFilter();
+//	}
+	
+//	@Bean
+//	@Profile("development")
+//	UrlRewriteFilter urlRewriteFilter() {
+//		return new UrlRewriteFilter();
+//	}
+	
+	static class UrlRewriteFilter implements Filter {
+		@Override
+		public void init(FilterConfig filterConfig) throws ServletException {}
+		@Override
+		public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+				throws IOException, ServletException {
+			HttpServletRequest req = (HttpServletRequest)request;
+			String path = req.getRequestURI().substring(req.getContextPath().length());
+			if (path != null && path.startsWith("/api")) {
+				req.getRequestDispatcher(path.substring("/api".length())).forward(request, response);
+			} else {
+				chain.doFilter(request, response);
+			}
+		}
+		@Override
+		public void destroy() {}		
 	}
 
-	@Autowired
-	EventRepository eventRepository;
 	
-	@Autowired
-	SessionRepository sessionRepository;
 
-	@Autowired
-	SpeakerRepository speakerRepository;
+	@Bean 
+	public DataSource dataSource() {
+      BasicDataSource ds = new BasicDataSource();
+      ds.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+      ds.setUrl("jdbc:log4jdbc:h2:mem:testdb;MODE=MYSQL");
+      ds.setUsername("sa");
+      ds.setPassword("");        
+      return ds;
+	}
 	
-	@Autowired
-	AttendeeRepository attendeeRepository;
+//    @Bean
+//    public DataSource dataSource() {
+//        BasicDataSource ds = new BasicDataSource();
+//        ds.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+//        ds.setUrl("jdbc:log4jdbc:mysql://localhost:3306/flaky_events?useUnicode=true&characterEncoding=utf8");
+//        ds.setUsername("flaky_events");
+//        ds.setPassword("flaky_events");        
+//        return ds;
+//    }
 	
 	@Bean
-	public CommandLineRunner commandLineRunner() {
-
-		return new CommandLineRunner() {
-			@Override
-			public void run(String... arg0) throws Exception {
-				createEvent(eventRepository, 10);
-
-			}
-
-			private void createEvent(EventRepository repo, int size) {
-				for (int i = 0; i < size; i++) {
-					Event e = new Event();
-					e.eventName = "イベント" + i;
-					e.eventPlace = "六本木" + i;
-					e.startDate = LocalDateTime.of(2017, 1, i + 1, 0, 0);
-					e.endDate = LocalDateTime.of(2017, 1, i + 1, 0, 0);
-					e.lotteryDate = LocalDate.now();
-					repo.save(e);
-
-					createSession(e, 2);
-
-					createAttendee(e, 20);
-					
-				}
-			}
-
-			private void createAttendee(Event e, int size) {
-				for (int i=0; i<size; i++) {
-					Attendee attendee = new Attendee();
-					attendee.comment = "よろしくお願いします"+i;
-					attendee.event = e;
-					attendeeRepository.save(attendee);
-				}
-				
-			}
-
-			private void createSession(Event event, int size) {
-				for (int i = 0; i < size; i++) {
-					Session session = new Session();
-					session.title = "タイトル" + i;
-					session.summary = "概要" + i;
-					session.event = event;
-					sessionRepository.save(session);
-					
-					createSpeker(session, 1);
-				}
-
-			}
-
-			private void createSpeker(Session session, int size) {
-				for (int i=0; i<size; i++) {
-					Speaker speaker = new Speaker();
-					speaker.session = session;
-					speaker.briefHistory = "略歴"+i;
-					speakerRepository.save(speaker);
-				}
-				
-				
-			}
-
-		};
+	public DummyDataCreator dummyDataCreator() {
+		return new DummyDataCreator();
 	}
 }
 

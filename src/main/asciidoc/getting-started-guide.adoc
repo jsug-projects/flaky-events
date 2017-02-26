@@ -1,0 +1,66 @@
+//variables
+:snippets: ./../../../target/generated-snippets
+:docIdBase: /getting-started
+
+= RESTful Events Getting Started Guide
+Kouhei Toki;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[introduction]
+= Introduction
+
+RESTful Events is a RESTful web service for creating and showing events. It uses hypermedia
+to describe the relationships between resources and to allow navigation between them.
+
+[getting-started]
+= Getting started
+
+
+
+[getting-started-running-the-service]
+== Running the service
+RESTful Events is written using http://projects.spring.io/spring-boot[Spring Boot] which
+makes it easy to get it up and running so that you can start exploring the REST API.
+
+The first step is to clone the Git repository:
+
+[source,bash]
+----
+$ git clone https://github.com/jsug-projects/flaky-events
+----
+
+Once the clone is complete, you're ready to get the service up and running:
+
+[source,bash]
+----
+$ cd flaky-events
+$ ./mvnw clean package
+$ java -jar -Dspring.profiles.active=development target/*.jar
+----
+
+TIP: If you omit "development" profile, authorization needed as resource server.
+
+
+You can check that the service is up and running by executing a simple request using
+cURL:
+
+include::{snippets}{docIdBase}/index/1/curl-request.adoc[]
+
+This request should yield the following response in the
+http://stateless.co/hal_specification.html[Hypertext Application Language (HAL)] format:
+
+include::{snippets}{docIdBase}/index/1/http-response.adoc[]
+
+Note the `_links` in the JSON response. They are key to navigating the API.
+
+
+[getting-started-api]
+== Api Usage
+You can see api reference at http://localhost:8083/docs/api-guide.html .
+
+

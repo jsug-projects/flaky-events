@@ -7,11 +7,17 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import jsug.flaky.events.entity.Event;
 import jsug.flaky.events.entity.Session;
 
 public interface SessionRepository extends PagingAndSortingRepository<Session, UUID>{
 
-	@RestResource(path = "byEventId", rel = "byEventId")
 	List<Session> findByEventId(@Param("eventId") UUID eventId);
+
 	
+	@RestResource(exported = false)
+	Session save(Session attendee);
+	@RestResource(exported = false)
+	void delete(Session attendee);
+
 }

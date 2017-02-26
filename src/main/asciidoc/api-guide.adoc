@@ -1,0 +1,27 @@
+= RESTful Flaky Events API Guide
+Kouhei Toki;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+
+//Overview
+include::./overview/overview.adoc[]
+
+[[resources]]
+= Resources
+
+//Events
+include::./api-resources/events.adoc[]
+
+//Sessions
+include::./api-resources/sessions.adoc[]
+
+//Attendees
+include::./api-resources/attendees.adoc[]
+
+
+

@@ -1,0 +1,62 @@
+//variable
+:snippets: ./../../../../target/generated-snippets
+:docIdBase: /resources/attendees
+
+[[resources-attendees]]
+== Attendees
+
+The attendees resources is used to get attendees
+
+//######################################
+[[resources-attendees-countByEventId]]
+=== Count attendees for event
+
+A `GET` request will retrieve the count of attendees
+
+==== Parameter structure
+
+include::{snippets}{docIdBase}/countByEventId/request-parameters.adoc[]
+
+==== Example request
+
+include::{snippets}{docIdBase}/countByEventId/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}{docIdBase}/countByEventId/http-response.adoc[]
+
+//######################################
+[[resources-attendees-countFlaky]]
+=== Count flaky occurrnece for member
+
+A `GET` request will retrieve the count of flaky occurrence for member
+
+=lllll=== Parameter structure
+
+includel::{snippets}{docIdBase}/countFlaky/request-parameters.adoc[]
+
+==== Example request
+
+include::{snippets}{docIdBase}/countFlaky/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}{docIdBase}/countFlaky/http-response.adoc[]
+
+//######################################
+[[resources-attendees-create]]
+=== Creating a attendee
+
+A `POST` request is used to create a attndee
+
+==== Request structure
+
+include::{snippets}{docIdBase}/create/request-fields.adoc[]
+
+==== Example request
+
+include::{snippets}{docIdBase}/create/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}{docIdBase}/create/http-response.adoc[]

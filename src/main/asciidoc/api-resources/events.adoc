@@ -1,0 +1,91 @@
+//variable
+:snippets: ./../../../../target/generated-snippets
+:docIdBase: /resources/events
+
+[[resources-events]]
+== Events
+
+The events resources is used to create and get events
+
+//######################################
+[[resources-events-retrieve]]
+=== Retrieve a event
+
+A `GET` request will retrieve the details of a event
+
+==== Path structure
+
+include::{snippets}{docIdBase}/retrieve/path-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}{docIdBase}/retrieve/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}{docIdBase}/retrieve/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}{docIdBase}/retrieve/http-response.adoc[]
+
+[[resources-events-retrieve-links]]
+==== Links
+
+include::{snippets}{docIdBase}/retrieve/links.adoc[]
+
+//######################################
+[[resources-events-search]]
+=== Search events
+
+A `GET` request will search specified events.
+
+==== Parameter structure
+
+include::{snippets}{docIdBase}/search/request-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}{docIdBase}/search/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}{docIdBase}/search/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}{docIdBase}/search/http-response.adoc[]
+
+[[resources-events-search-links]]
+==== Links
+
+include::{snippets}{docIdBase}/search/links.adoc[]
+
+
+//######################################
+[[resources-events-nearest]]
+=== Nearest events
+
+A `GET` request will search nearest events.
+
+==== Parameter structure
+
+include::{snippets}{docIdBase}/nearest/request-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}{docIdBase}/nearest/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}{docIdBase}/nearest/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}{docIdBase}/nearest/http-response.adoc[]
+
+[[resources-events-nearest-links]]
+==== Links
+
+include::{snippets}{docIdBase}/nearest/links.adoc[]
+
